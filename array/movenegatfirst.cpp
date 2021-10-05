@@ -13,6 +13,7 @@ int main()
             t++;
         }
     }
+
     for (int i = 0; i < l; i++)
     {
         if (ar[i] >= 0)
@@ -27,6 +28,7 @@ int main()
         cout << b[i] << " ";
     }
     return 0;
+
     // int j = 0;    // more advanced by using quicksort algo
     // for (int i = 0; i < l; i++)
     // {
