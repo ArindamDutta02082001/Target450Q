@@ -1,4 +1,6 @@
 
+
+// method 1:
 int maxProfit(vector<int> &prices)
 {
 
@@ -21,3 +23,33 @@ int maxProfit(vector<int> &prices)
     }
     return maxp;
 }
+
+
+method 2:
+    int maxProfit(vector<int>& prices) {
+
+        if(prices.size()==1)
+            return 0;
+        
+       int mini=prices[0],maxp=-999; 
+        for(int i=1;i<prices.size();i++)
+        {
+         
+            if( prices[i]<mini)
+            {
+                mini=prices[i];
+                if(prices[i]-mini>maxp)
+                    maxp=prices[i]-mini;
+            }
+            else
+            {
+                 if(prices[i]-mini>maxp)
+                    maxp=prices[i]-mini;
+                
+                            }
+        }
+        
+        return maxp;
+        
+       
+    }
