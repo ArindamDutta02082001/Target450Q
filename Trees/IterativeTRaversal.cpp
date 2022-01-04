@@ -1,5 +1,10 @@
 // link : https://practice.geeksforgeeks.org/problems/preorder-traversal-iterative/0/#
 // PREORDER
+// only 1 stack is used
+// s1: take stack s
+// s2: push root
+// s3: pop root and check if it has right and left . If it has then push right and left node
+//     pop them and repeat same process to them
 vector<int> preOrder(Node *root)
 {
     vector<int> v;
@@ -24,13 +29,17 @@ vector<int> preOrder(Node *root)
 
 // link: https://practice.geeksforgeeks.org/problems/inorder-traversal-iterative/0/
 // INORDER
+// only 1 stack and a Node Pointer (Node *) is used
+// s1: using that pointer , check for the left node till it reaches null and push them into stack
+// s2: upon reaching the null, now pop the top element from the stack and cout that data
+// s3: then change the pointer to the right side node
 vector<int> inOrder(Node *root)
 {
 
     vector<int> v;
     stack<Node *> s;
 
-    Node *n = root;
+    Node *n = root; // pointer pointing root
 
     while (n != NULL || !s.empty())
     {
@@ -41,10 +50,10 @@ vector<int> inOrder(Node *root)
         }
 
         Node *t = s.top();
-        s.pop();
 
         v.push_back(t->data);
         n = t->right;
+        s.pop();
     }
     return v;
 }
