@@ -7,6 +7,9 @@
 int height(struct Node *root)
 {
 
+    if (root == NULL)
+        return 0;
+
     queue<Node *> q;
     q.push(root);
     int height = 0, nodecount = 0;
