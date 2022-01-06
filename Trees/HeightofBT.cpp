@@ -20,11 +20,11 @@ int height(struct Node *root)
 
         while (nodecount)
         {
+            q.pop();
             if (n->left != NULL)
                 q.push(n->left);
             if (n->right != NULL)
                 q.push(n->right);
-            q.pop();
             nodecount--;
         }
     }
