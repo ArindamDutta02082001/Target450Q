@@ -13,13 +13,13 @@ int height(struct Node *root)
 
     while (!q.empty())
     {
-        Node *n = q.front();
 
         height++;
         nodecount = q.size();
 
         while (nodecount)
         {
+            Node *n = q.front();
             q.pop();
             if (n->left != NULL)
                 q.push(n->left);
