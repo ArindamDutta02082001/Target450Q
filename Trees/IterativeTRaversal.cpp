@@ -60,7 +60,7 @@ vector<int> inOrder(Node *root)
 
 // link : https://practice.geeksforgeeks.org/problems/postorder-traversal-iterative/0/#
 // POSTORDER
-// (using 2 stack. Here instead of 2 tack one vector and one stack is used since the return type of the function is vector)
+// (using 2 stack. Here instead of 2 stack, here one vector and one stack is used since the return type of the function is vector)
 vector<int> postOrder(Node *root)
 {
     stack<Node *> s1;
