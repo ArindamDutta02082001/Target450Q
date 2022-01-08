@@ -54,7 +54,7 @@ void mirror(Node *node)
     swap(node->left, node->right);
 }
 
-// CHECK IF TREE 2 IS MIRROR TREE OF TREE 1
+// CHECK IF TREE 2 IS MIRROR TREE OF TREE 1 //
 // s1: find inorder traversal of tree1 in v1 and tree2 in v2
 // s2: reverse any one vector and check if the two vectors are same
 class Solution

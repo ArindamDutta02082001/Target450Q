@@ -2,6 +2,7 @@
 
 // see code library
 
+int maxi=-999;
 int sumNodes(Node *node)
 {
     // sum=0;
@@ -10,6 +11,8 @@ int sumNodes(Node *node)
 
     int oldval = node->data;
     node->data = sumNodes(node->left) + sumNodes(node->right);
+    if(maxi<node->data)
+    maxi=node->data;
 
     return node->data + oldval;
 }
@@ -21,6 +24,6 @@ void toSumTree(Node *node)
     // node->data=sumNodes(node);
     sumNodes(node);
     // toSumTree(node->right);
-
+return maxi;
     // Your code here
 }
