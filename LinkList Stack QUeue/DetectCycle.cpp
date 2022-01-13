@@ -5,7 +5,7 @@ bool detectLoop(Node *head)
         return false;
     Node *p1 = head;
     Node *p2 = head;
-    while (p2->next != NULL && p2 != NULL)
+    while (p2->next != NULL && p2 != NULL)  //order important
     {
         p1 = p1->next;
         p2 = p2->next->next;
