@@ -12,7 +12,7 @@ int maxSubarraySum(int arr[], int n)
 
         if (s <= 0)
         {
-            temp[i] = s;
+            temp[i] = s; // main concept
             s = 0;
         }
         if (s > 0)
@@ -42,7 +42,7 @@ int maxSubarraySum(int arr[], int n)
         t += arr[i];
         if (t < 0)
         {
-            arr[i] = t;
+            arr[i] = t; // main concept
             t = 0;
         }
         else
