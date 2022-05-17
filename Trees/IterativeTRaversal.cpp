@@ -1,6 +1,6 @@
 // link : https://practice.geeksforgeeks.org/problems/preorder-traversal-iterative/0/#
 // PREORDER
-// only 1 stack is used
+//  1 stack and 1 vector is used
 // s1: take stack s
 // s2: push root
 // s3: pop root and check if it has right and left . If it has then push right and left node
@@ -41,13 +41,15 @@ vector<int> inOrder(Node *root)
 
     Node *n = root; // pointer pointing root
 
-    while (n != NULL || !s.empty())
+    while (n != NULL || !s.empty()) // while(true)
     {
         while (n != NULL)
         {
             s.push(n);
             n = n->left;
         }
+                                      // if(s.empty())
+                                      //  break;
 
         Node *t = s.top();
 
