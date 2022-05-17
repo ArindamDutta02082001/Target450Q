@@ -1,46 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
-long long countTriplets(long long[], int, long long);
+
+bool applicable(int arr[], int n, int mid, int m)
+{
+    int s = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int t = arr[i] - mid;
+        if (t >= 0)
+            s += arr[i];
+    }
+    return s >= m;
+}
 
 int main()
 {
-
-    long long arr[] = {-2, 0, 1, 3};
-    // int n = 8;
-    // for (int i = 0; i < n - 2; i++)
-    // {
-    //     for (int j = i + 1; j <i+2; j++)
-    //     {
-    //         // int j=i+1;
-    //         int k = j + 1;
-    //         // while(j<k){
-    //         cout << "{" << arr[i] << arr[j] << arr[k] << "}";
-    //         // }
-    //     }
-    //     cout << "\n";
-    // }
-    countTriplets(arr, 4, 2);
-    return 0;
-}
-
-long long countTriplets(long long arr[], int n, long long sum)
-{
-    long long c = 0;
-    for (int i = 0; i < n - 2; i++)
+    int n, m, arr[n];
+    cin >> n >> m;
+    for (int i = 0; i < n; i++)
     {
-        for (int j = i + 1; j < n - 1; j++)
-        {
-            // int j=i+1;
-            for (int k = j + 1; k < n; k++)
-            {
-                // while(j<k){
-                int temp = arr[i] + arr[j] + arr[k];
-                if (temp < sum)
-                    cout << temp << " ";
-            }
-            // }
-        }
+        cin >> arr[i];
     }
-    // Your code goes here
-    return c;
+
+    sort(arr, arr + n);
+
+    int l = 0, h = arr[n - 1];
+    int ans = 0;
+
+    while (l < h)
+    {
+        int mid = (l + h) / 2;
+        if (applicable(arr, n, mid, m))
+        {
+            h = mid;
+            ans = mid;
+        }
+        else
+            l = mid + 1;
+    }
+
+    cout << ans;
+
+    return 0;
 }

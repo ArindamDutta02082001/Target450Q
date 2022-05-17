@@ -19,7 +19,7 @@ vector<vector<int>> levelOrder(TreeNode *root)
     while (!q.empty())
     {
         count = q.size();
-        vector<int> t; // taking tempoarry vecor as we require to return vector of vector
+        vector<int> t; // taking temporary vecor as we require to return vector of vector
         while (count)
         {
             TreeNode *e = q.front();

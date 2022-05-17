@@ -1,3 +1,4 @@
+// ***********************MAX HEIGHT***************
 //   ITERATIVE
 // s1: take a queue push the root
 // s2: initialize height and countnode =0
@@ -43,8 +44,44 @@ int height(struct Node *root)
     int lh = height(root->left);
     int rh = height(root->right);
 
-    if (lh > rh)
+    if (lh >= rh)
         return lh + 1;
     else
         return rh + 1;
+}
+
+// ***********************MIN HEIGHT***************
+
+// link:https://leetcode.com/problems/minimum-depth-of-binary-tree/
+
+int height(struct Node *root)
+{
+
+    if (root == NULL)
+        return 0;
+
+    queue<Node *> q;
+    q.push(root);
+    int height = 0, nodecount = 0;
+
+    while (!q.empty())
+    {
+
+        height++;
+        nodecount = q.size();
+
+        while (nodecount)
+        {
+            Node *n = q.front();
+            if (n->left == NULL && n->right == NULL)
+                return height;
+            q.pop();
+            if (n->left != NULL)
+                q.push(n->left);
+            if (n->right != NULL)
+                q.push(n->right);
+            nodecount--;
+        }
+    }
+    return height;
 }
