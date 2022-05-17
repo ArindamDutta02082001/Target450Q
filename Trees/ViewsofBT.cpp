@@ -66,7 +66,63 @@ vector<int> rightView(Node *root)
     return v;
 }
 
+// link: https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1#
+// TOP VIEW
+// s1: using map and a queue . Here vertical level ordering is done . the final content in he map is the ans
+// s2 : if in the map element is present,  corresponding to the index we dont OVERWRITE the element
+vector<int> topView(Node *root)
+{
 
+    map<int, int> m;
 
-// To do
-// top bottom view
+    queue<pair<Node *, int>> q;
+    q.push({root, 0});
+    while (!q.empty())
+    {
+        Node *temp = q.front().first;
+        int tempn = q.front().second;
+        if (!m[tempn])
+            m[tempn] = temp->data;
+        if (temp->left != NULL)
+            q.push({temp->left, tempn - 1});
+        if (temp->right != NULL)
+            q.push({temp->right, tempn + 1});
+        q.pop();
+    }
+
+    vector<int> ret;
+    for (auto i : m)
+        ret.push_back(i.second);
+    return ret;
+}
+
+// link: https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
+// BOTTOM VIEW
+// s1: using map and a queue . Here vertical level ordering is done . the final content in he map is the ans
+// s2 : if in the map element is present,  corresponding to the index we  OVERWRITE the element
+vector<int> bottomView(Node *root)
+{
+    // Your Code Here
+
+    map<int, int> m;
+
+    queue<pair<Node *, int>> q;
+    q.push({root, 0});
+    while (!q.empty())
+    {
+        Node *temp = q.front().first;
+        int tempn = q.front().second;
+        // if(!m[tempn])
+        m[tempn] = temp->data;
+        if (temp->left != NULL)
+            q.push({temp->left, tempn - 1});
+        if (temp->right != NULL)
+            q.push({temp->right, tempn + 1});
+        q.pop();
+    }
+
+    vector<int> ret;
+    for (auto i : m)
+        ret.push_back(i.second);
+    return ret;
+}
