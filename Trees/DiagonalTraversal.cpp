@@ -4,26 +4,22 @@
 // s3: do this until the stack gets empty and finally return v
 vector<int> diagonal(Node *root)
 {
-    queue<Node*>q;
-    
-    vector<int>v;
-    if(root==NULL)
-    return v;
+    vector<int> v;
+    if (root == NULL)
+        return v;
+    queue<Node *> q;
     q.push(root);
-    
-    while(!q.empty())
+    while (!q.empty())
     {
-        Node *t=q.front();
-        q.pop();
-        while(t!=NULL)
+        Node *t = q.front();
+        while (t != NULL)
         {
             v.push_back(t->data);
-            if(t->left!=NULL)
-            q.push(t->left);
-            t=t->right;
+            if (t->left != NULL)
+                q.push(t->left);
+            t = t->right;
         }
-        
+        q.pop();
     }
     return v;
-   // your code here
 }
