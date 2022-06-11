@@ -1,36 +1,26 @@
-#include <bits/stdc++.h>
-using namespace std;
-string countAndSay(int);
-int main()
+// link:https://practice.geeksforgeeks.org/problems/decode-the-pattern1138/1
+string lookandsay(int n)
 {
-    cout << countAndSay(4);
-    return 0;
-}
-string countAndSay(int n)
-{
-
-    // static int k=1;
     if (n == 1)
         return "1";
-
-    string k = countAndSay(n - 1);
-    string t;
-    sort(k.begin(), k.end());
-    int nx = k.length(), m = stoi(k);
-    int c = 0, cd = k[nx - 1];
-    for (int i = 0; i < nx; i++)
+    string ret = "1";
+    int c = 1;
+    for (int i = 2; i <= n; i++)
     {
-        int t = m % 10;
-        if (t == cd)
-            c++;
-        else if(t!=cd || i==nx-1)
+        string t = "";
+        ret += "&";
+        for (int j = 1; j < ret.length(); j++)
         {
-            t += cd + c;
-            cd = t;
-            c = 0;
+            if (ret[j] == ret[j - 1])
+                c++;
+            else
+            {
+                t += to_string(c);
+                t += ret[j - 1];
+                c = 1;
+            }
         }
-        m = m / 10;
+        ret = t;
     }
-    reverse(t.begin(), t.end());
-    return t;
+    return ret;
 }
