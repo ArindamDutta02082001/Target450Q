@@ -59,3 +59,70 @@ int main()
         st.pop();
     }
 }
+
+// DELETE MIDDLE ELEM FROM THE STACK
+// LINK:https://practice.geeksforgeeks.org/problems/delete-middle-element-of-a-stack/1/
+// 1.RECURSIVE
+int count = 0;
+void dele(stack<int> &s)
+{
+    if (s.size() == count)
+    {
+        s.pop();
+        return;
+    }
+    else
+    {
+        int t = s.top();
+        s.pop();
+        dele(s);
+        s.push(t);
+    }
+}
+
+void deleteMid(stack<int> &s, int n)
+{
+
+    count = (n + 1) / 2;
+    dele(s);
+}
+
+// 2.NORMAL LOOP
+void deleteMid(stack<int> &s, int n)
+{
+    vector<int> v;
+    count = (n + 1) / 2;
+    dele(s);
+    while (count--)
+    {
+        v.push_back(s.top());
+        s.pop();
+    }
+    s.pop();
+    reverse(v.begin(), v.end());
+    for (auto i : v)
+        s.push(i);
+}
+
+// REVERSE THE STACK
+// LINK:https://practice.geeksforgeeks.org/problems/reverse-a-stack/1/
+// 1. NORMAL
+// -DO-
+// 2.RECURSIVE
+vector<int> rev;
+void reve(stack<int> &s)
+{
+    if (s.size() == 0)
+        return;
+
+    int temp = s.top();
+    s.pop();
+    reve(s);
+    rev.push_back(temp);
+}
+vector<int> Reverse(stack<int> St)
+{
+    reve(St);
+    reverse(rev.begin(), rev.end());
+    return rev;
+}
